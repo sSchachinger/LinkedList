@@ -28,7 +28,7 @@ namespace libLinkedList
     {
         private Node<T> _head;
         private Node<T> _tail;
-        private int index = -1;
+        private int index = 0;
 
         public LinkedList()
         {
@@ -43,7 +43,7 @@ namespace libLinkedList
         {
             get
             {
-                return (FindbyIndex(index));
+                return FindbyIndex(index);
             }
         }
 
@@ -54,6 +54,7 @@ namespace libLinkedList
             {
                 _head = node;
                 _tail = node;
+                Console.WriteLine("Head added");
             }
             else
             {
@@ -68,6 +69,7 @@ namespace libLinkedList
                 //konstante Performance:
                 _tail.next = node;
                 _tail = node;
+                Console.WriteLine("Node added");
             }
             length++;
         }
@@ -148,13 +150,13 @@ namespace libLinkedList
 
         public IEnumerator GetEnumerator()
         {
-            return (IEnumerator)this;
+            return this;
         }
 
         public bool MoveNext()
         {
             index++;
-            return index <= this.length;
+            return index <= length;
         }
 
         public void Reset()
