@@ -62,7 +62,6 @@ namespace libLinkedList
             {
                 _head = node;
                 _tail = node;
-                Console.WriteLine("Head added");
             }
             else
             {
@@ -77,7 +76,6 @@ namespace libLinkedList
                 //konstante Performance:
                 _tail.next = node;
                 _tail = node;
-                Console.WriteLine("Node added");
             }
             length++;
         }
