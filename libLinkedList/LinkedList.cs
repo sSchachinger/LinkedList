@@ -19,12 +19,12 @@ namespace libLinkedList
 
         public Node(T val, Node<T> nxt)
         {
-            this.value = val;
-            this.next = nxt;
+            value = val;
+            next = nxt;
         }
     }
 
-    public class LinkedList<T> : ILinkedList<T>, IEnumerable, IEnumerator
+    public class LinkedList<T> : ILinkedList<T>, IEnumerable, IEnumerator<T>
     {
         private Node<T> _head;
         private Node<T> _tail;
@@ -40,6 +40,14 @@ namespace libLinkedList
         public int length { get; set; }
 
         public object Current
+        {
+            get
+            {
+                return FindbyIndex(index);
+            }
+        }
+
+        T IEnumerator<T>.Current
         {
             get
             {
@@ -162,6 +170,11 @@ namespace libLinkedList
         public void Reset()
         {
             index = -1;
+        }
+
+        public void Dispose()
+        {
+            index = 0;
         }
     }
 }
