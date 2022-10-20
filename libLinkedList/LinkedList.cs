@@ -125,14 +125,17 @@ namespace libLinkedList
         {
             Node<T> current = _head;
             Node<T> prev = null;
-
+            int count = 0;
             while (current != null)
             {
+                count++;
                 if (current.value.Equals(item))
                 {
                     current = current.next;
                     if (prev != null)
                         prev.next = current;
+                    if (count == length)
+                        _tail = prev;
                     length--;
                     return true;
                 }
